@@ -1,0 +1,19 @@
+#ord{
+    position: relative;
+
+}
+
+
+.shor{
+    margin: 10px;
+}
+
+.rowers{
+    position: relative;
+    /* top: -100px; */
+    align-items: start;
+    text-align: left;
+    padding: 1px;
+    display: flex;
+    flex-wrap: wrap;
+  }

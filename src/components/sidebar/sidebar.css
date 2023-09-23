@@ -1,0 +1,19 @@
+.Sidebar {
+  position: relative;
+  margin-right: 10px; /* Reduzco el margen para que el espacio sea más uniforme */
+  min-width: 300px;
+  background-color: rgb(252, 209, 61, 0.3);
+  color: black;
+  padding: 40px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px 0;
+    cursor: pointer;
+  }
+  

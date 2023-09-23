@@ -1,0 +1,17 @@
+Footer{
+    top: 100px;
+}
+
+.rower {
+  display: flex;
+  align-items: stretch;
+}
+  
+.Sidebar {
+  width: 20%;
+  margin-right: 20px;
+}
+  
+.Shop {
+  flex: 1;
+}

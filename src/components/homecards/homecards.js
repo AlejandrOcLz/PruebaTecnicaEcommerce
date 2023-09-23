@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
-import React from 'react';
-import CardMedia from '@mui/material/CardMedia';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';import CardMedia from '@mui/material/CardMedia';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -17,8 +17,22 @@ const bull = (
     </Box>
   );
 const HomeCards = (propierties) =>{
+
+  const navigate = useNavigate();
+
+  const handleButtonClick = (datab) => {
+      const productData = {artc: datab};
+      navigate('/shop', {state:{productData}});
+  };
+
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+      setInputValue(event.target.value);
+  };
+
     return (
-      <Card sx={{ maxWidth: 350}}>
+      <Card sx={{ maxWidth: 350}} elevation={10}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {propierties.name}
@@ -31,7 +45,7 @@ const HomeCards = (propierties) =>{
           />
         </CardContent>
         <CardActions>
-          <Button size="small">VER MÁS</Button>
+          <Button size="small" onClick={() => handleButtonClick(propierties.data)}>SEE MORE</Button>
         </CardActions>
       </Card>
     );

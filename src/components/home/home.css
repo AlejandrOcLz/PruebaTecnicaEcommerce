@@ -23,7 +23,7 @@
     position: absolute;
     bottom: -6px;
     height: 527px;
-    width: 100%;
+    width: 99vw;
     overflow: hidden;
   }
 
@@ -31,7 +31,7 @@
     position: absolute;
     left: -180px;
     bottom: 10px;
-    width: 2402px;
+    min-width: 5402px;
     height: 427px;
     background: url(https://static.platzi.com/media/files/waves_c8551f5d-ecf6-4a81-ae1d-f3a0ad55ba10.png)  center bottom no-repeat;
   }

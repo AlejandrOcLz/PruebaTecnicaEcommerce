@@ -1,10 +1,22 @@
 import './top.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+      background: `#E45DF5`,
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: '0 4px',
+    },
+}));
 
 const Top = () => {
 
-    const pHSearch = "Buscar";
+    const pHSearch = "Search";
 
     const [cartImage, setCartImage] = useState('/cart.png');
 
@@ -27,7 +39,7 @@ const Top = () => {
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
-      };
+    };
 
     return(
         <div className="Top">
@@ -39,11 +51,13 @@ const Top = () => {
                         <img src = "/search.png" id="buttons" alt='buscador'></img>
                     </button>
                 </div>
-                <button class="sbutton" onClick={() => handleButtonClick("*")}>Todos los productos</button>
+                <button class="sbutton" onClick={() => handleButtonClick("*")}>All the products</button>
                 <button id="cbutton" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave} >
                     <div class="cart">
-                        <p id="cant">0</p>
-                        <img src = {cartImage} id="buttonc" alt='Carrito'></img>
+                        <StyledBadge badgeContent={5} color="secondary">
+                            <img src = {cartImage} id="buttonc" alt='Carrito'></img>
+                        </StyledBadge>
+                        
                     </div>
                 </button>
 
