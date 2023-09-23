@@ -3,17 +3,19 @@
 
 }
 
-
 .shor{
+    position: relative;
+    top: 50px;
     margin: 10px;
+    margin-bottom: 30px;
 }
 
 .rowers{
     position: relative;
-    /* top: -100px; */
-    align-items: start;
     text-align: left;
     padding: 1px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 50px;
   }

@@ -10,9 +10,9 @@ function Starter(){
           <header className="App-header">
             <Top></Top>
           </header>
-          <body className="App-body">
+          <div className="App-body">
             <Home></Home>
-          </body>
+          </div>
           <Footer></Footer>
         </div>
       );

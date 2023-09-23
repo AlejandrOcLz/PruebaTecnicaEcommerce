@@ -1,6 +1,7 @@
 .Top{
     background-color: #FCD13D;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    max-height: 80px;
 }
 
 h1{

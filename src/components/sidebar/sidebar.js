@@ -1,32 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './sidebar.css';
-import Slider from '@mui/material/Slider';
+import Rating from '@mui/material/Rating';
+import Price from '../price/price';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { useNavigate } from 'react-router-dom';
 
-const marks = [
-  {
-    value: 0,
-    label: '$ 0',
-  },
-  {
-    value: 500,
-    label: '$ 500',
-  },
-  {
-    value: 1000,
-    label: '$ 1000',
-  },
-];
+const Sidebar = ({onFilter}) => {
 
-function valuetext(value) {
-  return `${value}`;
-}
+  const [sliderValue, setSliderValue] = useState([0, 1000]);
+  const [ratingValue, setRatingValue] = useState(0);
+  const [categoryValue, setCategoryValue] = useState("all");
 
-const Sidebar = () => {
+  const handleSliderChange = (newValue) => {
+    setSliderValue(newValue);
+  };
 
-  const [value, setValue] = React.useState([0, 1000]);
+  const handleRatingChange = (event, newValue) => {
+    setRatingValue(newValue);
+  };
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleCategoryChange = (event) => {
+    setCategoryValue(event.target.value);
+  };
+
+  const handleButtonClick = () => {
+    onFilter(sliderValue, ratingValue, categoryValue);
   };
 
   return (
@@ -34,20 +36,35 @@ const Sidebar = () => {
       <ul>
         <li>Price
           <br/>
-          <Slider
-            min={0}
-            max={1000}
-            getAriaLabel={() => 'prices'}
-            value={value}
-            marks={marks}
-            onChange={handleChange}
-            valueLabelDisplay="10000000"
-            getAriaValueText={valuetext}
-          />
+          <Price onChangePrice={handleSliderChange}></Price>
         </li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        {/* Agrega más elementos del menú aquí */}
+        <hr></hr>
+        <li>Rating
+          <br/>
+          <Rating onChange={handleRatingChange}></Rating>
+        </li>
+        <hr></hr>
+        <li>
+        <FormControl>
+          <FormLabel id="demo-radio-buttons-group-label">Category</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            value={categoryValue}
+            onChange={handleCategoryChange}
+            name="radio-buttons-group"
+          >
+            <FormControlLabel value="all" control={<Radio />} label="All" />
+            <FormControlLabel value="women's clothing" control={<Radio />} label="Women's clothing" />
+            <FormControlLabel value="men's clothing" control={<Radio />} label="Men's clothing" />
+            <FormControlLabel value="jewelery" control={<Radio />} label="Jewelery" />
+            <FormControlLabel value="electronics" control={<Radio />} label="Electronics" />
+          </RadioGroup>
+        </FormControl>
+        </li>
+        <hr></hr>
+        <li id='filter'>
+          <button className="btn" onClick={handleButtonClick}>Filter Products</button>
+        </li>
       </ul>
     </div>
   );

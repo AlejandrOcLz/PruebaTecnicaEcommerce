@@ -1,7 +1,8 @@
 .Sidebar {
   position: relative;
   margin-right: 10px; /* Reduzco el margen para que el espacio sea más uniforme */
-  min-width: 300px;
+  min-width: 120px;
+  margin-bottom: -50px;
   background-color: rgb(252, 209, 61, 0.3);
   color: black;
   padding: 40px;
@@ -15,5 +16,27 @@
   li {
     padding: 10px 0;
     cursor: pointer;
+  }
+
+  #filter{
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn{
+    border-radius: 5px;
+    border-width: 1px;
+    border: transparent solid;
+    color: white;
+    background-color: rgba(228, 93, 245, 0.65);
+    padding: 20px;
+  }
+
+  .btn:hover{
+    cursor: pointer;
+    border-width: 1px;
+    border: white solid;
+    background-color: rgba(228, 93, 245, 1);
+    padding: 20px;
   }
   

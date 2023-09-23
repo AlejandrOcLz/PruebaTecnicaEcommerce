@@ -21,7 +21,7 @@
 .waves {
     z-index: 2; 
     position: absolute;
-    bottom: -6px;
+    bottom: 250px;
     height: 527px;
     width: 99vw;
     overflow: hidden;

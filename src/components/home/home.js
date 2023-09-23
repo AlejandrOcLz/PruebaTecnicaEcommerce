@@ -5,21 +5,21 @@ import './home.css';
 const Home = () => {
     return(
         <div className="Home">
-            <img id="backh" src="/fondo.jpg"></img>
-            <div class="row" id='cardpos'>
-                <div class="card">
-                    <HomeCards class="cards" name="HIGHEST RANKED" image="/rank.png" data="rank"></HomeCards>
+            <img id="backh" src="/fondo.jpg" alt='back'></img>
+            <div className="row" id='cardpos'>
+                <div className="card">
+                    <HomeCards className="cards" name="HIGHEST RANKED" image="/rank.png" data="rank"></HomeCards>
                 </div>
-                <div class="card">
-                    <HomeCards class="cards" name="PROMOTIONS" image="/prom.png" data="prom"></HomeCards>
+                <div className="card">
+                    <HomeCards className="cards" name="PROMOTIONS" image="/prom.png" data="prom"></HomeCards>
                 </div>
-                <div class="card">
-                    <HomeCards class="cards" name="MOST VISITED" image="/view.png" data="view"></HomeCards>
+                <div className="card">
+                    <HomeCards className="cards" name="MOST VISITED" image="/view.png" data="view"></HomeCards>
                 </div>
             </div>
-            <div class="waves">
-                <div class="wave circulo a"></div>
-                <div class="wave circulo a"></div>
+            <div className="waves">
+                <div className="wave circulo a"></div>
+                <div className="wave circulo a"></div>
             </div>
             
         </div>

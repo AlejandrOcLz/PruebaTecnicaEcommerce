@@ -8,23 +8,22 @@ import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
 const Shoppingcard = (properties) => {
 
-    const [value, setValue] = React.useState(properties.rank);
     const { product, description } = properties;
 
-    const truncatedProduct = product.slice(0, 50) + (product.length > 50 ? '...' : '');
-    const truncatedDescription = description.slice(0, 100) + (description.length > 100 ? '...' : '');
+    const truncatedProduct = product.slice(0, 50) + (product.length > 5 ? '...' : '');
+    const truncatedDescription = description.slice(0, 100) + (description.length > 10 ? '...' : '');
 
 
     return(
-        <Card sx={{ maxWidth: 300, minWidth:20, maxHeight:500, minHeight:500}} elevation={10}>
+        <Card sx={{ maxWidth: 300, minWidth:300, maxHeight:450, minHeight:450}} elevation={10}>
             <CardMedia
                 component="img"
                 alt="shop"
-                height="140"
+                height="200"
                 image={properties.image}
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h9" component="div">
                 {truncatedProduct}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

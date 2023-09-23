@@ -43,7 +43,7 @@ const Top = () => {
 
     return(
         <div className="Top">
-            <div class="row">
+            <div className="row">
                 <a href="/home" id="ec"><h1>E-COMMERCE</h1></a>
                 <div id="search">
                     <input id="sinputs" placeholder={pHSearch} value={inputValue} onChange={handleInputChange}></input>
@@ -51,9 +51,9 @@ const Top = () => {
                         <img src = "/search.png" id="buttons" alt='buscador'></img>
                     </button>
                 </div>
-                <button class="sbutton" onClick={() => handleButtonClick("*")}>All the products</button>
+                <button className="sbutton" onClick={() => handleButtonClick("*")}>All the products</button>
                 <button id="cbutton" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave} >
-                    <div class="cart">
+                    <div className="cart">
                         <StyledBadge badgeContent={5} color="secondary">
                             <img src = {cartImage} id="buttonc" alt='Carrito'></img>
                         </StyledBadge>
