@@ -30,9 +30,19 @@ const Top = () => {
 
     const navigate = useNavigate();
 
+    const sliderValue = [0, 1000];
+    const mostratingValue = 0;
+    const viewValue = 0;
+
     const handleButtonClick = (datab) => {
         const productData = {artc: datab};
-        navigate('/shop', {state:{productData}});
+        navigate('/shop', {
+            state:{
+                sliderValue,
+                mostratingValue,
+                viewValue,
+            }
+        });
     };
 
     const [inputValue, setInputValue] = useState('');
@@ -51,7 +61,7 @@ const Top = () => {
                         <img src = "/search.png" id="buttons" alt='buscador'></img>
                     </button>
                 </div>
-                <button className="sbutton" onClick={() => handleButtonClick("*")}>All the products</button>
+                <button className="sbutton" onClick={() => handleButtonClick(sliderValue, mostratingValue, viewValue)}>All the products</button>
                 <button id="cbutton" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave} >
                     <div className="cart">
                         <StyledBadge badgeContent={5} color="secondary">

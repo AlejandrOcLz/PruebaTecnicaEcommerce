@@ -1,4 +1,4 @@
-import React from 'react'; // Importa React desde la biblioteca 'react'
+import React, {useState} from 'react'; // Importa React desde la biblioteca 'react'
 import Footer from "../../components/footer/footer";
 import Shop from "../../components/shop/shop";
 import Sidebar from "../../components/sidebar/sidebar";
@@ -7,23 +7,23 @@ import { useLocation } from 'react-router-dom';
 import './articles.css'
 
 function Articles(){
-
-    var sliders;
-    var ratings = 0;
-    var categories = "all";
-    
-    const handleFilter = (sliderValue, ratingValue, categoryValue) => {
-        
-        sliders = sliderValue;
-        ratings = ratingValue;
-        categories = categoryValue;
-        console.log("Slider Value:", sliderValue);
-        console.log("Rating Value:", ratingValue);
-        console.log("Category Value:", categoryValue);
-    };
-
     const location = useLocation();
-    const { productData } = location.state;
+    const {sliderValue, mostratingValue,viewValue } = location.state;
+
+    const [sliders, setSliders] = useState(sliderValue);
+    const [ratings, setRatings] = useState(5);
+    const [mostratings, setmostRatings] = useState(mostratingValue);
+    const [categories, setCategories] = useState("all");
+    const [views, setViews] = useState(viewValue);
+    
+    const handleFilter = (sliderValue, ratingValue, categoryValue, mostratingValue, viewValue) => {
+        console.log(mostratingValue);
+        setSliders(sliderValue);
+        setRatings(ratingValue);
+        setCategories(categoryValue);
+        setmostRatings(mostratingValue);
+        setViews(viewValue);
+    };
 
     return(
         <div className="Articles">
@@ -33,7 +33,7 @@ function Articles(){
             <div className="App-body">
                 <div className="rower">
                     <Sidebar onFilter={handleFilter}></Sidebar>
-                    <Shop typeD={productData.artc} sliderValue={sliders} ratingValue={ratings} categoryValue={categories}></Shop>
+                    <Shop sliderValue={sliders} ratingValue={ratings} categoryValue={categories} mostratingValue={mostratings} viewValue={viewValue}></Shop>
                 </div>
             </div>
             <Footer></Footer>

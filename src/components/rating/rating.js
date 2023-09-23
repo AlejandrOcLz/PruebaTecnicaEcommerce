@@ -1,6 +1,5 @@
 const Rating = () => {
 
-    const [value, setValue] = React.useState([0, 1000]);
     const [values, setValues] = React.useState(0);
   
     const handleChange = (event, newValue) => {

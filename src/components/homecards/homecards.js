@@ -8,30 +8,37 @@ import Typography from '@mui/material/Typography';
 import './homecards.css';
 
 
-const HomeCards = (propierties) =>{
+const HomeCards = ({name, image,sliderValue,viewValue, mostratingValue}) =>{
+
+  console.log(mostratingValue)
 
   const navigate = useNavigate();
 
   const handleButtonClick = (datab) => {
       const productData = {artc: datab};
-      navigate('/shop', {state:{productData}});
+      navigate('/shop', {
+        state:{
+          sliderValue,
+          mostratingValue,
+          viewValue,
+      }});
   };
 
     return (
       <Card sx={{ maxWidth: 350}} elevation={10}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {propierties.name}
+            {name}
           </Typography>
           <CardMedia
             component="img"
             height="200"
-            image={propierties.image}
+            image={image}
             alt="cards"
           />
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={() => handleButtonClick(propierties.data)}>SEE MORE</Button>
+          <Button size="small" onClick={() => handleButtonClick(sliderValue, mostratingValue, viewValue)}>SEE MORE</Button>
         </CardActions>
       </Card>
     );

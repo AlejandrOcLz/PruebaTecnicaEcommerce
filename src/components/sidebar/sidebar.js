@@ -12,7 +12,8 @@ import { useNavigate } from 'react-router-dom';
 const Sidebar = ({onFilter}) => {
 
   const [sliderValue, setSliderValue] = useState([0, 1000]);
-  const [ratingValue, setRatingValue] = useState(0);
+  const [ratingValue, setRatingValue] = useState(5);
+  const [mostratings, setmostRatings] = useState(0);
   const [categoryValue, setCategoryValue] = useState("all");
 
   const handleSliderChange = (newValue) => {
@@ -28,7 +29,7 @@ const Sidebar = ({onFilter}) => {
   };
 
   const handleButtonClick = () => {
-    onFilter(sliderValue, ratingValue, categoryValue);
+    onFilter(sliderValue, ratingValue, categoryValue, mostratings);
   };
 
   return (
@@ -41,7 +42,7 @@ const Sidebar = ({onFilter}) => {
         <hr></hr>
         <li>Rating
           <br/>
-          <Rating onChange={handleRatingChange}></Rating>
+          <Rating onChange={handleRatingChange} value={ratingValue}></Rating>
         </li>
         <hr></hr>
         <li>
