@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
+import DropdownButton from '../dropdown/dropdown';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -15,6 +16,25 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const Top = () => {
+
+    const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+    let Products = [];
+
+    if (savedCartItems) {
+    console.log(savedCartItems); 
+    } else {
+    }
+
+    if (savedCartItems && Array.isArray(savedCartItems)) {
+        Products = savedCartItems
+        .map((item) => ({
+        image: item.image,
+        product: item.product,
+        price: item.price,
+        quantity: item.quantity
+        }));
+    }else{
+    }
 
     const pHSearch = "Search";
 
@@ -70,6 +90,12 @@ const Top = () => {
         setInputValue(event.target.value);
     };
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+
     return(
         <div className="Top">
             <div className="row">
@@ -81,14 +107,18 @@ const Top = () => {
                     </button>
                 </div>
                 <button className="sbutton" onClick={() => handleButtonClick(sliderValue, mostratingValue, viewValue, tittleValue)}>All the products</button>
-                <button id="cbutton" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave} >
+                <button id="cbutton" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave} onClick={toggleDropdown}>
                     <div className="cart">
-                        <StyledBadge badgeContent={5} color="secondary">
+                        <StyledBadge badgeContent={Products.length} color="primary">
                             <img src = {cartImage} id="buttonc" alt='Carrito'></img>
                         </StyledBadge>
                         
                     </div>
+                    
                 </button>
+                {isOpen && (
+                    <DropdownButton></DropdownButton>
+                )}
 
             </div>
         </div>

@@ -29,7 +29,6 @@ const Shop = ({ typeD,sliderValue, ratingValue, categoryValue, mostratingValue, 
       const mostratingMatches = product.rank >= mostratingValue;
       const viewMatches = product.view >= viewValue;
 
-      console.log(product.product.toLowerCase());
       return priceInRange && ratingMatches && categoryMatches && mostratingMatches && viewMatches && tittleMatches;
     });
 
@@ -50,8 +49,6 @@ const Shop = ({ typeD,sliderValue, ratingValue, categoryValue, mostratingValue, 
         console.error(err);
       });
   }, [sliderValue, ratingValue, categoryValue, mostratingValue, tittleValue]);
-
-  // ...
 
   return (
     <div className="Shop">
