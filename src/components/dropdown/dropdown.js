@@ -64,7 +64,7 @@ const DropdownButton = () => {
                                 <div className="stack">
                                     <h5>{truncatextpr(index)}</h5>
                                     <h2>$ {product.price}</h2>
-                                    <h5>Cantidad: {product.quantity}</h5>
+                                    <h5>Quantity: {product.quantity}</h5>
                                 </div>
                             </div>
                         </li>

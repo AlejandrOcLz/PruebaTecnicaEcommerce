@@ -68,14 +68,6 @@ const TopMovil = () => {
 
     const [cartImage, setCartImage] = useState('/cart.png');
 
-    function handleMouseEnter(){
-        setCartImage('/cart2.png');
-    }
-    
-    function handleMouseLeave(){
-        setCartImage('/cart.png');
-    }
-
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -88,7 +80,7 @@ const TopMovil = () => {
             <div className="rowm">
                 <button className='menu' onClick={toggleMenu}><MenuIcon  sx={{ fontSize: 40 }}/></button>
                 <a href="/home" id="ec"><h1>EC</h1></a>
-                <button id="cbutton" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave} onClick={toggleDropdown}>
+                <button id="cbutton" onClick={toggleDropdown}>
                     <div className="cart">
                         <StyledBadge badgeContent={Products.length} color="primary">
                             <img src = {cartImage} id="buttonc" alt='Carrito'></img>

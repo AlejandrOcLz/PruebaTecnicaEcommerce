@@ -40,10 +40,7 @@
   
  
   
-    #sbuttons:hover{
-      background-color: rgba(228, 93, 245, 1);
-      cursor: pointer;
-    }
+
   
     #buttons{
       height: 40px;
@@ -57,10 +54,6 @@
       border: 0px;
     }
   
-    #cbutton:hover{
-      cursor: pointer;
-      color: #3DA1FC;
-    }
   
     .cart{
       text-align: center;
