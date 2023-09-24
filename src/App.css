@@ -9,6 +9,7 @@ header{
 body{
   position: relative;
   top: 40px;
+  overflow-x: hidden;
 }
 
 .row{
@@ -31,6 +32,7 @@ body{
   font-weight: bold;
   border-width: 1px;
   border: transparent solid;
+
 }
 
 .sbutton:hover{

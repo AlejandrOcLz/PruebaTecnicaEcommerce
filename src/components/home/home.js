@@ -1,6 +1,6 @@
-import HomeCards from '../homecards/homecards';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './home.css';
+import HomeCards from '../homecards/homecards';
 
 const Home = () => {
     const sliders = [0, 1000];
@@ -10,11 +10,10 @@ const Home = () => {
     const categories = "all";
     const view = 500;
     const tittle = "all";
-
     return(
-        <div className="Home">
-            <img id="backh" src="/fondo.jpg" alt='back'></img>
-            <div className="row" id='cardpos'>
+      <div className='Home'>
+        <img id="backh" src="/fondo.jpg" alt='back'></img>
+            <div className="rowm" id='cardpos'>
                 <div className="card">
                     <HomeCards className="cards" name="HIGHEST RANKED" image="/rank.png" sliderValue={sliders} mostratingValue={mostratings} viewValue="0" categoryValue="all" tittleValue={tittle}></HomeCards>
                 </div>
@@ -29,9 +28,9 @@ const Home = () => {
                 <div className="wave circulo a"></div>
                 <div className="wave circulo a"></div>
             </div>
-            
-        </div>
-    )
+      </div>
+      
+    );
 }
 
 export default Home;
