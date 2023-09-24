@@ -40,7 +40,16 @@ const DropdownButton = () => {
     const finish = () => {
         localStorage.clear();
     }
+    console.log(Products.product);
 
+    const truncatextpr = (index) => {
+        console.log(index)
+        return Products.length > 0
+        ? Products[index].product.slice(0, 20) + (Products.length > 1 ? '...' : '')
+        : '';
+    }
+
+    
     
     return(
         <div className="drop">
@@ -53,7 +62,7 @@ const DropdownButton = () => {
                             <div className="row" id='cartsh'>
                                 <img src={product.image}></img>
                                 <div className="stack">
-                                    <h5>{product.product}</h5>
+                                    <h5>{truncatextpr(index)}</h5>
                                     <h2>$ {product.price}</h2>
                                     <h5>Cantidad: {product.quantity}</h5>
                                 </div>

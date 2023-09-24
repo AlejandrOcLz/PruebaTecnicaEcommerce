@@ -1,3 +1,4 @@
+
 .drop{
     background-color: white;
     padding-left: 10px;
@@ -6,13 +7,19 @@
     min-height: 200px;
     max-height: 500px;
     position: absolute;
-    left: 70vw;
+    /* left: 70vw; */
     top: 80px;
     text-align: left;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+@media (min-width: 768px) {
+    .drop {
+      left: 70vw;
+    }
+  }
 
 #cartsh{
     margin-top: -50px;

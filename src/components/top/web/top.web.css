@@ -1,0 +1,80 @@
+.Top{
+    z-index: 1000000;
+      background-color: #FCD13D;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      max-height: 80px;
+  }
+  
+  h1{
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  #ec{
+      color: black;
+      text-decoration: none;
+      margin: auto;
+    }
+  
+    #search{
+      position: relative;
+      top: -6px;
+      align-items: center;
+    }
+    
+    #sinputs{
+      margin: auto;
+      padding: 15px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-width: 0px;
+    }
+  
+    #sbuttons{
+      position: relative;
+      top: 14px;
+      margin: auto;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background-color: rgba(228, 93, 245, 0.65);
+      border: 0px;
+    }
+  
+    #sbuttons:hover{
+      background-color: rgba(228, 93, 245, 1);
+      cursor: pointer;
+    }
+  
+    #buttons{
+      height: 40px;
+      width: 40px;
+    }
+  
+    #cbutton{
+      margin: auto;
+      border-radius: 5px;
+      background-color: transparent;
+      border: 0px;
+    }
+  
+    #cbutton:hover{
+      cursor: pointer;
+      color: #3DA1FC;
+    }
+  
+    .cart{
+      text-align: center;
+      align-items: center;
+    }
+  
+    #buttonc{
+      height: 60px;
+      width: 60px;
+    }
+  
+    #cant{
+      position: absolute;
+      font-size: 20px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(255, 255, 255, 1);
+    }
