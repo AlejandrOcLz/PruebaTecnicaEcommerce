@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import './homecards.css';
 
 
-const HomeCards = ({name, image,sliderValue,viewValue, mostratingValue}) =>{
+const HomeCards = ({name, image,sliderValue,viewValue, mostratingValue, tittleValue, categoryValue}) =>{
 
   console.log(mostratingValue)
 
@@ -18,6 +18,8 @@ const HomeCards = ({name, image,sliderValue,viewValue, mostratingValue}) =>{
       const productData = {artc: datab};
       navigate('/shop', {
         state:{
+          tittleValue,
+          categoryValue,
           sliderValue,
           mostratingValue,
           viewValue,
@@ -38,7 +40,7 @@ const HomeCards = ({name, image,sliderValue,viewValue, mostratingValue}) =>{
           />
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={() => handleButtonClick(sliderValue, mostratingValue, viewValue)}>SEE MORE</Button>
+          <Button size="small" onClick={() => handleButtonClick(sliderValue, mostratingValue, viewValue, categoryValue, tittleValue)}>SEE MORE</Button>
         </CardActions>
       </Card>
     );

@@ -3,9 +3,11 @@ import Skeleton from '@mui/material/Skeleton';
 import Shoppingcard from "../shoppingcard/shoppingcard";
 import './shop.css'
 
-const Shop = ({ typeD,sliderValue, ratingValue, categoryValue, mostratingValue, viewValue }) => {
+const Shop = ({ typeD,sliderValue, ratingValue, categoryValue, mostratingValue, viewValue, tittleValue, search }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  
 
 
   const filteredProducts = data
@@ -20,13 +22,15 @@ const Shop = ({ typeD,sliderValue, ratingValue, categoryValue, mostratingValue, 
     }))
     .filter((product) => {
       
-      const priceInRange = product.price >= sliderValue[0] && product.price <= sliderValue[1];
+      const priceInRange = sliderValue && sliderValue.length === 2 && product.price >= sliderValue[0] && product.price <= sliderValue[1];
       const ratingMatches = product.rank <= ratingValue;
       const categoryMatches = categoryValue === "all" || product.category === categoryValue;
+      const tittleMatches = product.product.toLowerCase().includes(tittleValue.toLowerCase()) || tittleValue === "all";
       const mostratingMatches = product.rank >= mostratingValue;
       const viewMatches = product.view >= viewValue;
 
-      return priceInRange && ratingMatches && categoryMatches && mostratingMatches && viewMatches;
+      console.log(product.product.toLowerCase());
+      return priceInRange && ratingMatches && categoryMatches && mostratingMatches && viewMatches && tittleMatches;
     });
 
   useEffect(() => {
@@ -45,7 +49,7 @@ const Shop = ({ typeD,sliderValue, ratingValue, categoryValue, mostratingValue, 
       .catch((err) => {
         console.error(err);
       });
-  }, [sliderValue, ratingValue, categoryValue, mostratingValue]);
+  }, [sliderValue, ratingValue, categoryValue, mostratingValue, tittleValue]);
 
   // ...
 

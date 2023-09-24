@@ -8,21 +8,23 @@ import './articles.css'
 
 function Articles(){
     const location = useLocation();
-    const {sliderValue, mostratingValue,viewValue } = location.state;
+    const { sliderValue, mostratingValue, viewValue, tittleValue, categoryValue } = location.state || {};
 
     const [sliders, setSliders] = useState(sliderValue);
     const [ratings, setRatings] = useState(5);
     const [mostratings, setmostRatings] = useState(mostratingValue);
-    const [categories, setCategories] = useState("all");
+    const [categories, setCategories] = useState(categoryValue);
     const [views, setViews] = useState(viewValue);
+    const [tittles, settittles] = useState(tittleValue);
     
-    const handleFilter = (sliderValue, ratingValue, categoryValue, mostratingValue, viewValue) => {
+    const handleFilter = (sliderValue, ratingValue, categoryValue, mostratingValue, viewValue, tittleValue) => {
         console.log(mostratingValue);
         setSliders(sliderValue);
         setRatings(ratingValue);
         setCategories(categoryValue);
         setmostRatings(mostratingValue);
         setViews(viewValue);
+        settittles(tittleValue);
     };
 
     return(
@@ -33,7 +35,7 @@ function Articles(){
             <div className="App-body">
                 <div className="rower">
                     <Sidebar onFilter={handleFilter}></Sidebar>
-                    <Shop sliderValue={sliders} ratingValue={ratings} categoryValue={categories} mostratingValue={mostratings} viewValue={viewValue}></Shop>
+                    <Shop sliderValue={sliders} ratingValue={ratings} categoryValue={categories} mostratingValue={mostratings} viewValue={viewValue} tittleValue={tittleValue}></Shop>
                 </div>
             </div>
             <Footer></Footer>

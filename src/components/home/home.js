@@ -9,19 +9,20 @@ const Home = () => {
     const ratings = 5;
     const categories = "all";
     const view = 500;
+    const tittle = "all";
 
     return(
         <div className="Home">
             <img id="backh" src="/fondo.jpg" alt='back'></img>
             <div className="row" id='cardpos'>
                 <div className="card">
-                    <HomeCards className="cards" name="HIGHEST RANKED" image="/rank.png" sliderValue={sliders} mostratingValue={mostratings} viewValue="0"></HomeCards>
+                    <HomeCards className="cards" name="HIGHEST RANKED" image="/rank.png" sliderValue={sliders} mostratingValue={mostratings} viewValue="0" categoryValue="all" tittleValue={tittle}></HomeCards>
                 </div>
                 <div className="card">
-                    <HomeCards className="cards" name="PROMOTIONS" image="/prom.png" data="prom" sliderValue={prom} mostratingValue="0" viewValue="0"></HomeCards>
+                    <HomeCards className="cards" name="PROMOTIONS" image="/prom.png" data="prom" sliderValue={prom} mostratingValue="0" viewValue="0" categoryValue="all" tittleValue={tittle}></HomeCards>
                 </div>
                 <div className="card">
-                    <HomeCards className="cards" name="MOST VISITED" image="/view.png" data="view" sliderValue={sliders} mostratingValue="0" viewValue={view}></HomeCards>
+                    <HomeCards className="cards" name="MOST VISITED" image="/view.png" data="view" sliderValue={sliders} mostratingValue="0" viewValue={view} categoryValue="all" tittleValue={tittle}></HomeCards>
                 </div>
             </div>
             <div className="waves">

@@ -15,6 +15,7 @@ const Sidebar = ({onFilter}) => {
   const [ratingValue, setRatingValue] = useState(5);
   const [mostratings, setmostRatings] = useState(0);
   const [categoryValue, setCategoryValue] = useState("all");
+  const [tittleValue, setTittle] = useState("all");
 
   const handleSliderChange = (newValue) => {
     setSliderValue(newValue);
@@ -29,7 +30,7 @@ const Sidebar = ({onFilter}) => {
   };
 
   const handleButtonClick = () => {
-    onFilter(sliderValue, ratingValue, categoryValue, mostratings);
+    onFilter(sliderValue, ratingValue, categoryValue, mostratings, tittleValue);
   };
 
   return (
