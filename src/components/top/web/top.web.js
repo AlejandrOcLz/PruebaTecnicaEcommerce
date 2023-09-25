@@ -1,5 +1,5 @@
 import './top.web.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -21,16 +21,23 @@ const TopWeb = () => {
   const [cartImage, setCartImage] = useState('/cart.png');
   const [inputValue, setInputValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(savedCartItems.length);
 
-  let Products = [];
-  if (savedCartItems && Array.isArray(savedCartItems)) {
-    Products = savedCartItems.map((item) => ({
-      image: item.image,
-      product: item.product,
-      price: item.price,
-      quantity: item.quantity
-    }));
-  }
+  useEffect(() => {
+    const handleCartUpdated = () => {
+      // Actualiza el estado de 'cartCount' cuando se emite el evento 'cartUpdated'
+      const updatedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+      const updatedItemCount = updatedCartItems ? updatedCartItems.length : 0;
+      setCartCount(updatedItemCount);
+    };
+  
+    window.addEventListener('cartUpdated', handleCartUpdated);
+  
+    return () => {
+      window.removeEventListener('cartUpdated', handleCartUpdated);
+    };
+  }, []);
+
 
   function handleMouseEnter() {
     setCartImage('/cart2.png');
@@ -88,7 +95,7 @@ const TopWeb = () => {
         <button className="sbutton" onClick={handleButtonClick}>All the products</button>
         <button id="cbutton" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave} onClick={toggleDropdown}>
           <div className="cart">
-            <StyledBadge badgeContent={Products.length} color="primary">
+            <StyledBadge badgeContent={cartCount} color="primary">
               <img src={cartImage} id="buttonc" alt='Carrito'></img>
             </StyledBadge>
           </div>

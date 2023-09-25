@@ -16,6 +16,8 @@ const Shoppingcard = (properties) => {
     if (savedCartData) {
       setCartItems(savedCartData.items);
     }
+
+    
   }, []);
 
   const addToCart = (product) => {
@@ -33,6 +35,8 @@ const Shoppingcard = (properties) => {
     setCartItems([...items]);
 
     localStorage.setItem('cartData', JSON.stringify(existingCartData));
+    const event = new Event('cartUpdated');
+  window.dispatchEvent(event);
   };
 
   useEffect(() => {

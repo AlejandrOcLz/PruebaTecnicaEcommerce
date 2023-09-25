@@ -24,6 +24,8 @@ const DropdownButton = () => {
   } else {
   }
 
+  
+
   useEffect(() => {
     let total = 0;
     for (const item of Products) {
@@ -70,6 +72,8 @@ const DropdownButton = () => {
     setCartItems(updatedCartItems);
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
 
+    const event = new Event('cartUpdated');
+    window.dispatchEvent(event);
   
     setForceUpdate(!forceUpdate);
   };

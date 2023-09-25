@@ -31,9 +31,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const TopMovil = () => {
+  const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
   const [menuOpen, setMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState(getCartItems());
+  const [cartCount, setCartCount] = useState(savedCartItems.length);
 
   const location = useLocation();
   const {
@@ -51,9 +53,25 @@ const TopMovil = () => {
   const [views, setViews] = useState(viewValue);
   const [tittles, setTittles] = useState(tittleValue);
 
+
   useEffect(() => {
     const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
     setCartItems(getCartItems());
+  }, []);
+
+  useEffect(() => {
+    const handleCartUpdated = () => {
+      // Actualiza el estado de 'cartCount' cuando se emite el evento 'cartUpdated'
+      const updatedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+      const updatedItemCount = updatedCartItems ? updatedCartItems.length : 0;
+      setCartCount(updatedItemCount);
+    };
+  
+    window.addEventListener('cartUpdated', handleCartUpdated);
+  
+    return () => {
+      window.removeEventListener('cartUpdated', handleCartUpdated);
+    };
   }, []);
 
   const handleFilter = (
@@ -88,7 +106,7 @@ const TopMovil = () => {
         <a href="/home" id="ec"><h1>EC</h1></a>
         <button id="cbutton" onClick={toggleDropdown}>
           <div className="cart">
-            <StyledBadge badgeContent={cartItems.length} color="primary">
+            <StyledBadge badgeContent={cartCount} color="primary">
               <img src = {cartImage} id="buttonc" alt='Carrito'></img>
             </StyledBadge>
           </div>
