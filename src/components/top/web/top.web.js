@@ -6,126 +6,97 @@ import { styled } from '@mui/material/styles';
 import DropdownButton from '../../dropdown/dropdown';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
-    '& .MuiBadge-badge': {
-      background: `#E45DF5`,
-      right: -3,
-      top: 13,
-      border: `2px solid ${theme.palette.background.paper}`,
-      padding: '0 4px',
-    },
+  '& .MuiBadge-badge': {
+    background: `#E45DF5`,
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
 }));
 
 const TopWeb = () => {
+  const navigate = useNavigate();
+  const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+  const [cartImage, setCartImage] = useState('/cart.png');
+  const [inputValue, setInputValue] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
 
-    const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
-    let Products = [];
+  let Products = [];
+  if (savedCartItems && Array.isArray(savedCartItems)) {
+    Products = savedCartItems.map((item) => ({
+      image: item.image,
+      product: item.product,
+      price: item.price,
+      quantity: item.quantity
+    }));
+  }
 
-    if (savedCartItems) {
-    console.log(savedCartItems); 
-    } else {
-    }
+  function handleMouseEnter() {
+    setCartImage('/cart2.png');
+  }
 
-    if (savedCartItems && Array.isArray(savedCartItems)) {
-        Products = savedCartItems
-        .map((item) => ({
-        image: item.image,
-        product: item.product,
-        price: item.price,
-        quantity: item.quantity
-        }));
-    }else{
-    }
+  function handleMouseLeave() {
+    setCartImage('/cart.png');
+  }
 
-    const pHSearch = "Search";
+  const pHSearch = "Search";
+  const searchHandleButtonClick = (datab) => {
+    console.log(datab);
+    navigate('/shop', {
+      state: {
+        tittleValue: datab,
+        categoryValue: "all",
+        sliderValue: [0, 1000],
+        mostratingValue: 0,
+        viewValue: 0,
+      }
+    });
+  };
 
-    const [cartImage, setCartImage] = useState('/cart.png');
+  const handleButtonClick = () => {
+    navigate('/shop', {
+      state: {
+        tittleValue: "all",
+        categoryValue: "all",
+        sliderValue: [0, 1000],
+        mostratingValue: 0,
+        viewValue: 0,
+      }
+    });
+    setInputValue('');
+  };
 
-    function handleMouseEnter(){
-        setCartImage('/cart2.png');
-    }
-    
-    function handleMouseLeave(){
-        setCartImage('/cart.png');
-    }
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
-    const navigate = useNavigate();
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-    const sliderValue = [0, 1000];
-    const mostratingValue = 0;
-    const viewValue = 0;
-    var tittleValue = "all";
-    var categoryValue = "all";
-
-    const searchHandleButtonClick = (datab) => {
-        console.log(datab);
-        navigate('/shop', {
-            
-            state:{
-                tittleValue:datab,
-                categoryValue,
-                sliderValue,
-                mostratingValue,
-                viewValue,
-            }
-        });
-      };
-
-    const handleButtonClick = () => {
-        
-        navigate('/shop', {
-            state:{
-                tittleValue,
-                categoryValue,
-                sliderValue,
-                mostratingValue,
-                viewValue,
-            }
-        });
-        setInputValue('');
-    };
-
-    const [inputValue, setInputValue] = useState('');
-
-    const handleInputChange = (event) => {
-        setInputValue(event.target.value);
-    };
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
-
-    return(
-        <div className="Top">
-            <div className="row">
-                <a href="/home" id="ec"><h1>E-COMMERCE</h1></a>
-                <div id="search">
-                    <input id="sinputs" placeholder={pHSearch} value={inputValue} onChange={handleInputChange}></input>
-                    <button id="sbuttons" onClick={() => searchHandleButtonClick(`${inputValue}`)}>
-                        <img src = "/search.png" id="buttons" alt='buscador'></img>
-                    </button>
-                </div>
-                <button className="sbutton" onClick={() => handleButtonClick(sliderValue, mostratingValue, viewValue, tittleValue)}>All the products</button>
-                <button id="cbutton" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave} onClick={toggleDropdown}>
-                    <div className="cart">
-                        <StyledBadge badgeContent={Products.length} color="primary">
-                            <img src = {cartImage} id="buttonc" alt='Carrito'></img>
-                        </StyledBadge>
-                        
-                    </div>
-                    
-                </button>
-                {isOpen && (
-                    <DropdownButton></DropdownButton>
-                )}
-
-            </div>
+  return (
+    <div className="Top">
+      <div className="row">
+        <a href="/home" id="ec"><h1>E-COMMERCE</h1></a>
+        <div id="search">
+          <input id="sinputs" placeholder={pHSearch} value={inputValue} onChange={handleInputChange}></input>
+          <button id="sbuttons" onClick={() => searchHandleButtonClick(`${inputValue}`)}>
+            <img src="/search.png" id="buttons" alt='buscador'></img>
+          </button>
         </div>
-    );
-        
-}
-
-
+        <button className="sbutton" onClick={handleButtonClick}>All the products</button>
+        <button id="cbutton" onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave} onClick={toggleDropdown}>
+          <div className="cart">
+            <StyledBadge badgeContent={Products.length} color="primary">
+              <img src={cartImage} id="buttonc" alt='Carrito'></img>
+            </StyledBadge>
+          </div>
+        </button>
+        {isOpen && <DropdownButton></DropdownButton>}
+      </div>
+    </div>
+  );
+};
 
 export default TopWeb;

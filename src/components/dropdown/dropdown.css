@@ -59,3 +59,8 @@ img{
     background-color: #3DA1FC;
     border: transparent;
 }
+
+.delete{
+    position: relative;
+    left: -50px;
+}
