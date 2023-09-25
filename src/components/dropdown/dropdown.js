@@ -23,9 +23,7 @@ const DropdownButton = () => {
     }));
   } else {
   }
-
   
-
   useEffect(() => {
     let total = 0;
     for (const item of Products) {
@@ -52,22 +50,16 @@ const DropdownButton = () => {
   };
 
   const removeProduct = (productName) => {
-    // Obtener la lista de productos del almacenamiento local
     const existingCartData = JSON.parse(localStorage.getItem('cartData')) || { items: [] };
     const { items } = existingCartData;
   
-    // Encuentra el índice del producto que deseas eliminar
     const productIndex = items.findIndex((item) => item.product === productName);
   
     if (productIndex !== -1) {
-      // Elimina el producto de la lista
       items.splice(productIndex, 1);
-  
-      // Actualiza la lista de productos en el almacenamiento local
       localStorage.setItem('cartData', JSON.stringify(existingCartData));
     }
   
-    // setCartItems([...items]);
     const updatedCartItems = cartItems.filter((item) => item.product !== productName);
     setCartItems(updatedCartItems);
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));

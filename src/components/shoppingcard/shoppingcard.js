@@ -36,7 +36,7 @@ const Shoppingcard = (properties) => {
 
     localStorage.setItem('cartData', JSON.stringify(existingCartData));
     const event = new Event('cartUpdated');
-  window.dispatchEvent(event);
+    window.dispatchEvent(event);
   };
 
   useEffect(() => {

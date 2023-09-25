@@ -17,7 +17,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const TopWeb = () => {
   const navigate = useNavigate();
-  const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+  const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
   const [cartImage, setCartImage] = useState('/cart.png');
   const [inputValue, setInputValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);

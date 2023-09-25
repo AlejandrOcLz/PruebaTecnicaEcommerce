@@ -31,7 +31,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const TopMovil = () => {
-  const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+  const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
   const [menuOpen, setMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState(getCartItems());
