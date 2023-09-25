@@ -24,7 +24,7 @@ const HomeCards = ({ name, image, sliderValue, viewValue, mostratingValue, tittl
   };
 
   return (
-    <Card sx={{ maxWidth: 350 }} elevation={10}>
+    <Card sx={{ minWidth: 150 }} elevation={10}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {name}
